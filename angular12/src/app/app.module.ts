@@ -9,6 +9,10 @@ import { ShowFacultyComponent } from './faculty/show-faculty/show-faculty.compon
 import { AddEditFacultyComponent } from './faculty/add-edit-faculty/add-edit-faculty.component';
 import { ShowStudentComponent } from './student/show-student/show-student.component';
 import { AddEditStudentComponent } from './student/add-edit-student/add-edit-student.component';
+import{SharedService} from './shared.service';
+
+import{HttpClientModule} from '@angular/common/http';
+import{FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,12 @@ import { AddEditStudentComponent } from './student/add-edit-student/add-edit-stu
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

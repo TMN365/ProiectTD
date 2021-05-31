@@ -85,6 +85,7 @@ namespace AplicatieWebTd3.Controllers
                             StudentName ='" + student.StudentName+ @"'
                             ,FacultyName ='" + student.FacultyName + @"'
                             ,DateOfMatriculation ='" + student.DateOfMatriculation+ @"'
+                            ,PhotoFileName = '" + student.PhotoFileName +@"'
                             WHERE StudentId = '" + student.StudentId+ @"'";
 
             DataTable table = new DataTable();
@@ -155,7 +156,7 @@ namespace AplicatieWebTd3.Controllers
         public JsonResult GetAllFacultyNames()
         {
             string query = @"SELECT DISTINCT(FacultyName)
-                            FROM [UniversityDB].[dbo].[StudentTable]";
+                            FROM [UniversityDB].[dbo].[FacultyTable]";
             DataTable table = new DataTable();
             string sqlDataSource = configuration.GetConnectionString("UniversityAppCon");
             SqlDataReader sqlReader;

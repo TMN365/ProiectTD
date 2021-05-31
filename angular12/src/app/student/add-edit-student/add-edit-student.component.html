@@ -1,0 +1,45 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+
+
+    <div class="form-froup row" style="width: 80%;">
+
+        <label class="col-sm-2 col-form-label">Student Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="StudentName"
+            placeholder="Enter Student Name">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Faculty Name</label>
+        <div class="col-sm-10">
+            <select class="form-control" [(ngModel)]="FacultyName">
+                <option>--Select--</option>
+                <option *ngFor="let facultyName of FacultyList">
+                    {{facultyName.FacultyName}}
+                </option>
+            </select>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Date of matriculation</label>
+        <div class="col-sm-10">
+            <input type="date" [(ngModel)]="DateOfMatriculation">
+        </div>
+
+
+
+    </div>
+
+    <div class="ml-3 bd-highlight" style="width: 40%;">
+        <img [src]=PhotoFilePath height="250px" width="200px">
+        <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+    </div>
+    
+</div>
+
+
+<button (click)="addStudent()" *ngIf="stud.StudentId==0" class="btn btn-success">
+    Add
+</button>
+
+<button (click)="updateStudent()" *ngIf="stud.StudentId!=0" class="btn btn-primary">
+    Update
+</button>

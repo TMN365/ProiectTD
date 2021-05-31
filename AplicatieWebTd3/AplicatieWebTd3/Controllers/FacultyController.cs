@@ -111,6 +111,29 @@ namespace AplicatieWebTd3.Controllers
             return new JsonResult("Deleted succesfully");
         }
 
-        
+        [Route("GetAllFacultyNames")]
+        [HttpGet]
+        public JsonResult GetAllFacultyNames()
+        {
+            string query = @"SELECT FacultyId, FacultyName
+                            FROM [UniversityDB].[dbo].[FacultyTable]";
+            DataTable table = new DataTable();
+            string sqlDataSource = configuration.GetConnectionString("UniversityAppCon");
+            SqlDataReader sqlReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand command = new SqlCommand(query, myCon))
+                {
+                    sqlReader = command.ExecuteReader();
+                    table.Load(sqlReader);
+                    sqlReader.Close();
+                }
+                myCon.Close();
+            }
+            return new JsonResult(table);
+        }
+
+
     }
 }
